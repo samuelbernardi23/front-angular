@@ -6,11 +6,17 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { ClienteComponent } from './pages/cliente/cliente.component';
+import { ProdutosComponent } from './pages/produtos/produtos.component';
 
 const routes: Routes = [
   {
     path: 'clientes',
     component: ClienteComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'produtos',
+    component: ProdutosComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -53,6 +59,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule],
   providers: [AuthGuardService],
   exports: [RouterModule],
-  declarations: [HomeComponent, ProfileComponent, ClienteComponent]
+  declarations: [HomeComponent, ProfileComponent, ClienteComponent, ProdutosComponent]
 })
 export class AppRoutingModule { }

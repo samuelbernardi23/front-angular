@@ -8,5 +8,10 @@ export const navigation = [
     text: 'Clientes',
     icon: 'card',
     path: '/clientes'
+  },
+  {
+    text: 'Produtos',
+    icon: 'product',
+    path: '/produtos'
   }
 ];

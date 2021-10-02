@@ -1,0 +1,48 @@
+<h2 class="content-block">Produtos</h2>
+
+<dx-data-grid class="dx-card wide-card"
+  [dataSource]="dataSource"
+  [showBorders]="false"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true"
+  width="100%">
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxi-column
+    dataField="id"
+    [width]="90"
+    [hidingPriority]="2"
+    caption="ID">
+  </dxi-column>
+  <dxi-column
+    dataField="nome"
+    [width]="190"
+    caption="Subject"
+    [hidingPriority]="4"
+    caption="Nome">
+  </dxi-column>
+  <dxi-column
+    dataField="preco_unitario"
+    [width]="190"
+    caption="Subject"
+    [hidingPriority]="4"
+    dataType="range"
+    [format]="{
+      type: 'decimal',
+      precision: 2
+  }"
+    caption="Preço unitário">
+  </dxi-column>
+  <dxi-column
+    dataField="multiplo"
+    [width]="80"
+    caption="Subject"
+    [hidingPriority]="4"
+    caption="Múltiplo">
+  </dxi-column>
+</dx-data-grid>
