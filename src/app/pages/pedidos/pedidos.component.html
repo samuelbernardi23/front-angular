@@ -1,0 +1,41 @@
+<h2 class="content-block">Pedidos</h2>
+
+<dx-data-grid
+  class="dx-card wide-card"
+  [dataSource]="dataSource"
+  [showBorders]="false"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true"
+  width="100%"
+>
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxi-column
+    dataField="id"
+    [width]="200"
+    caption="Pedido (ID)"
+  >
+  </dxi-column>
+  <dxi-column
+    dataField="cliente_id"
+    [width]="200"
+    caption="Cliente (ID)"
+  >
+  </dxi-column>
+  <dxi-column
+    dataField="cliente_nome"
+    caption="Cliente"
+  >
+  </dxi-column>
+
+  <dxi-column
+    dataField="valor_total"
+    [width]="250"
+    caption="Valor total"
+  >
+  </dxi-column>
+</dx-data-grid>

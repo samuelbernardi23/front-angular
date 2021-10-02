@@ -7,6 +7,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { ClienteComponent } from './pages/cliente/cliente.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { PedidosComponent } from './pages/pedidos/pedidos.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,11 @@ const routes: Routes = [
   {
     path: 'produtos',
     component: ProdutosComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'pedidos',
+    component: PedidosComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -59,6 +65,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule],
   providers: [AuthGuardService],
   exports: [RouterModule],
-  declarations: [HomeComponent, ProfileComponent, ClienteComponent, ProdutosComponent]
+  declarations: [HomeComponent, ProfileComponent, ClienteComponent, ProdutosComponent, PedidosComponent ]
 })
 export class AppRoutingModule { }

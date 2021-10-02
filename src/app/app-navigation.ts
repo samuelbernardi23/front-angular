@@ -13,5 +13,10 @@ export const navigation = [
     text: 'Produtos',
     icon: 'product',
     path: '/produtos'
+  },
+  {
+    text: 'Pedidos',
+    icon: 'check',
+    path: '/pedidos'
   }
 ];
