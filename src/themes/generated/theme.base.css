@@ -23536,13 +23536,13 @@ input.dx-hidden {
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12);
 }
 .dx-fa-button.dx-fa-button-main .dx-overlay-content.dx-state-hover {
-  background-color: #ee3900;
+  background-color: #644DED;
 }
 .dx-fa-button.dx-fa-button-main .dx-overlay-content.dx-state-hover .dx-fa-button-icon {
   background-color: transparent;
 }
 .dx-fa-button.dx-fa-button-main .dx-overlay-content.dx-state-active {
-  background-color: #d53300;
+  background-color: #5b43e0;
 }
 .dx-fa-button.dx-fa-button-main .dx-overlay-content.dx-state-active .dx-fa-button-icon {
   background-color: transparent;
@@ -24986,7 +24986,7 @@ input.dx-hidden {
   background-color: #71a436;
 }
 .dx-diagram-toolbar .dx-format-active:not(.dx-color-format):not(.dx-background-format).dx-button-default {
-  background-color: #ee3900;
+  background-color: #644DED;
 }
 .dx-diagram-toolbar .dx-format-active:not(.dx-color-format):not(.dx-background-format).dx-button-danger {
   background-color: #ea1c0d;
@@ -25455,17 +25455,17 @@ input.dx-hidden {
 }
 .dx-gantt .dx-gantt-task-edit-wrapper .dx-gantt-task-edit-frame {
   height: 100%;
-  border: 1px solid #ee3900;
+  border: 1px solid #644DED;
   border-radius: 4px;
 }
 .dx-gantt .dx-gantt-task-edit-wrapper .dx-gantt-task-edit-frame .dx-gantt-task-edit-progress {
-  border-color: transparent transparent #ee3900;
+  border-color: transparent transparent #644DED;
 }
 .dx-gantt .dx-gantt-task-edit-wrapper .dx-gantt-task-edit-frame .dx-gantt-task-edit-progress::before {
   width: 12px;
   height: 6px;
   bottom: -14px;
-  border: 1px solid #ee3900;
+  border: 1px solid #644DED;
 }
 .dx-gantt .dx-gantt-task-edit-wrapper .dx-gantt-task-edit-frame .dx-gantt-task-edit-progress-status {
   border-radius: 4px;
@@ -25481,7 +25481,7 @@ input.dx-hidden {
 .dx-gantt .dx-gantt-task-edit-successor-dependency-l,
 .dx-gantt .dx-gantt-task-edit-successor-dependency-r {
   background: #fff;
-  border: 1px solid #ee3900;
+  border: 1px solid #644DED;
   width: 12px;
   height: 12px;
   margin: auto;
