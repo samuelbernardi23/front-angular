@@ -4,67 +4,75 @@ import { LoginFormComponent, ResetPasswordFormComponent, CreateAccountFormCompon
 import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
-import { ClienteComponent } from './pages/cliente/cliente.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { PedidosComponent } from './pages/pedidos/pedidos.component';
+import { ClientesModule } from './pages/clientes/clientes.module';
 
 const routes: Routes = [
   {
     path: 'clientes',
-    component: ClienteComponent,
-    canActivate: [ AuthGuardService ]
-  },
-  {
-    path: 'produtos',
-    component: ProdutosComponent,
-    canActivate: [ AuthGuardService ]
+    loadChildren: () => import('./pages/clientes/clientes.module').then(m => m.ClientesModule),
+    canActivate:[AuthGuardService]
   },
   {
     path: 'pedidos',
-    component: PedidosComponent,
-    canActivate: [ AuthGuardService ]
+    loadChildren: () => import('./pages/pedidos/pedidos.module').then(m => m.PedidosModule),
+    canActivate:[AuthGuardService]
   },
   {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [ AuthGuardService ]
+    path: 'produtos',
+    loadChildren: () => import('./pages/produtos/produtos.module').then(m => m.ProdutosModule),
+    canActivate:[AuthGuardService]
   },
-  {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [ AuthGuardService ]
-  },
-  {
-    path: 'login-form',
-    component: LoginFormComponent,
-    canActivate: [ AuthGuardService ]
-  },
-  {
-    path: 'reset-password',
-    component: ResetPasswordFormComponent,
-    canActivate: [ AuthGuardService ]
-  },
-  {
-    path: 'create-account',
-    component: CreateAccountFormComponent,
-    canActivate: [ AuthGuardService ]
-  },
-  {
-    path: 'change-password/:recoveryCode',
-    component: ChangePasswordFormComponent,
-    canActivate: [ AuthGuardService ]
-  },
-  {
-    path: '**',
-    redirectTo: 'home'
-  }
+  // {
+  //   path: 'produtos',
+  //   component: ProdutosComponent,
+  //   canActivate: [AuthGuardService]
+  // },
+  // {
+  //   path: 'pedidos',
+  //   component: PedidosComponent,
+  //   canActivate: [AuthGuardService]
+  // },
+  // {
+  //   path: 'profile',
+  //   component: ProfileComponent,
+  //   canActivate: [AuthGuardService]
+  // },
+  // {
+  //   path: 'home',
+  //   component: HomeComponent,
+  //   canActivate: [AuthGuardService]
+  // },
+  // {
+  //   path: 'login-form',
+  //   component: LoginFormComponent,
+  //   canActivate: [AuthGuardService]
+  // },
+  // {
+  //   path: 'reset-password',
+  //   component: ResetPasswordFormComponent,
+  //   canActivate: [AuthGuardService]
+  // },
+  // {
+  //   path: 'create-account',
+  //   component: CreateAccountFormComponent,
+  //   canActivate: [AuthGuardService]
+  // },
+  // {
+  //   path: 'change-password/:recoveryCode',
+  //   component: ChangePasswordFormComponent,
+  //   canActivate: [AuthGuardService]
+  // },
+  // {
+  //   path: '**',
+  //   redirectTo: 'home'
+  // }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule],
+  imports: [RouterModule.forRoot(routes)],
   providers: [AuthGuardService],
   exports: [RouterModule],
-  declarations: [HomeComponent, ProfileComponent, ClienteComponent, ProdutosComponent, PedidosComponent ]
 })
 export class AppRoutingModule { }

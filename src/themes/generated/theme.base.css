@@ -13642,7 +13642,7 @@
 .dx-datagrid-rowsview .dx-data-row.dx-selection .dx-validator.dx-invalid,
 .dx-datagrid-rowsview .dx-data-row.dx-selection:hover .dx-validator.dx-datagrid-invalid,
 .dx-datagrid-rowsview .dx-data-row.dx-selection:hover .dx-validator.dx-invalid {
-  background-color: rgba(244,67,54,.32);
+  background-color: rgba(141, 9, 0, 0.32);
 }
 .dx-datagrid-rowsview .dx-overlay-wrapper.dx-invalid-message .dx-overlay-content {
   padding: 9px 17px;
@@ -13728,14 +13728,14 @@
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > tr > td,
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > td,
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > tr > td {
-  background-color: rgba(255,87,34,.04);
+  background-color: #DFDBF8;
   color: rgba(0,0,0,.87);
 }
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > td.dx-datagrid-group-space,
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > tr > td.dx-datagrid-group-space,
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > td.dx-datagrid-group-space,
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > tr > td.dx-datagrid-group-space {
-  border-right-color: rgba(255,87,34,.04);
+  border-right-color: #DFDBF8;
 }
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > td.dx-pointer-events-none,
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > tr > td.dx-pointer-events-none,
@@ -13746,8 +13746,8 @@
 }
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover:not(.dx-row-lines) > td,
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):not(.dx-row-lines) > td {
-  border-bottom: 1px solid rgba(255,87,34,.04);
-  border-top: 1px solid rgba(255,87,34,.04);
+  border-bottom: 1px solid #DFDBF8;
+  border-top: 1px solid #DFDBF8;
 }
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused).dx-row-lines > td,
 .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover.dx-row-lines > td {
@@ -13923,7 +13923,7 @@
 .dx-rtl .dx-datagrid-rowsview .dx-selection.dx-row > tr > td:not(.dx-focused).dx-datagrid-group-space,
 .dx-rtl .dx-datagrid-rowsview .dx-selection.dx-row:hover > td:not(.dx-focused).dx-datagrid-group-space,
 .dx-rtl .dx-datagrid-rowsview .dx-selection.dx-row:hover > tr > td:not(.dx-focused).dx-datagrid-group-space {
-  border-left-color: rgba(255,87,34,.04);
+  border-left-color: #DFDBF8;
 }
 .dx-rtl .dx-datagrid-rowsview .dx-selection.dx-row > td.dx-pointer-events-none,
 .dx-rtl .dx-datagrid-rowsview .dx-selection.dx-row > tr > td.dx-pointer-events-none,
@@ -16184,14 +16184,14 @@ input.dx-hidden {
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused) > tr > td,
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > td,
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > tr > td {
-  background-color: rgba(255,87,34,.04);
+  background-color: #DFDBF8;
   color: rgba(0,0,0,.87);
 }
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused) > td.dx-treelist-group-space,
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused) > tr > td.dx-treelist-group-space,
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > td.dx-treelist-group-space,
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > tr > td.dx-treelist-group-space {
-  border-right-color: rgba(255,87,34,.04);
+  border-right-color: #DFDBF8;
 }
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused) > td.dx-pointer-events-none,
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused) > tr > td.dx-pointer-events-none,
@@ -16202,8 +16202,8 @@ input.dx-hidden {
 }
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover:not(.dx-row-lines) > td,
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):not(.dx-row-lines) > td {
-  border-bottom: 1px solid rgba(255,87,34,.04);
-  border-top: 1px solid rgba(255,87,34,.04);
+  border-bottom: 1px solid #DFDBF8;
+  border-top: 1px solid #DFDBF8;
 }
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused).dx-row-lines > td,
 .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover.dx-row-lines > td {
@@ -16379,7 +16379,7 @@ input.dx-hidden {
 .dx-rtl .dx-treelist-rowsview .dx-selection.dx-row > tr > td:not(.dx-focused).dx-treelist-group-space,
 .dx-rtl .dx-treelist-rowsview .dx-selection.dx-row:hover > td:not(.dx-focused).dx-treelist-group-space,
 .dx-rtl .dx-treelist-rowsview .dx-selection.dx-row:hover > tr > td:not(.dx-focused).dx-treelist-group-space {
-  border-left-color: rgba(255,87,34,.04);
+  border-left-color: #DFDBF8;
 }
 .dx-rtl .dx-treelist-rowsview .dx-selection.dx-row > td.dx-pointer-events-none,
 .dx-rtl .dx-treelist-rowsview .dx-selection.dx-row > tr > td.dx-pointer-events-none,
@@ -25500,7 +25500,7 @@ input.dx-hidden {
   background-color: rgba(0,0,0,.87);
 }
 .dx-gantt .dx-gantt-sel {
-  background-color: rgba(255,87,34,.04);
+  background-color: #DFDBF8;
 }
 .dx-gantt .dx-gantt-conn-v {
   border-left-color: rgba(0,0,0,.87);
