@@ -1,30 +1,27 @@
 <h2 class="content-block">Produtos</h2>
 
-<dx-data-grid class="dx-card wide-card"
+<dx-data-grid
+  class="dx-card wide-card"
   [dataSource]="dataSource"
   [showBorders]="false"
-  [focusedRowEnabled]="true"
-  [focusedRowIndex]="0"
   [columnAutoWidth]="true"
   [columnHidingEnabled]="true"
-  width="100%">
-
+  noDataText="Nenhum dado encontrado."
+  width="100%"
+>
   <dxo-paging [pageSize]="10"></dxo-paging>
   <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
   <dxo-filter-row [visible]="true"></dxo-filter-row>
 
-  <dxi-column
-    dataField="id"
-    [width]="90"
-    [hidingPriority]="2"
-    caption="ID">
+  <dxi-column dataField="id" [width]="90" [hidingPriority]="2" caption="ID">
   </dxi-column>
   <dxi-column
     dataField="nome"
     [width]="190"
     caption="Subject"
     [hidingPriority]="4"
-    caption="Nome">
+    caption="Nome"
+  >
   </dxi-column>
   <dxi-column
     dataField="preco_unitario"
@@ -35,14 +32,71 @@
     [format]="{
       type: 'decimal',
       precision: 2
-  }"
-    caption="Preço unitário">
+    }"
+    caption="Preço unitário"
+  >
   </dxi-column>
   <dxi-column
     dataField="multiplo"
     [width]="80"
     caption="Subject"
     [hidingPriority]="4"
-    caption="Múltiplo">
+    caption="Múltiplo"
+  >
   </dxi-column>
 </dx-data-grid>
+
+<dx-speed-dial-action
+  icon="add"
+  label="Adicionar produto"
+  (onClick)="popupVisible = !popupVisible"
+></dx-speed-dial-action>
+
+<dx-popup
+  width="60%"
+  height="70%"
+  [visible]="true"
+  title="Adicionar produto"
+  [(visible)]="popupVisible"
+>
+  <form action="your-action" (submit)="onFormSubmit($event)">
+    <dx-form
+      id="form"
+      [formData]="formData"
+      [readOnly]="false"
+      [showColonAfterLabel]="true"
+      validationGroup="customerData"
+    >
+      <dxi-item itemType="group" caption="" colCount="2">
+        <dxi-item dataField="nome" colSpan="2">
+          <dxi-validation-rule
+            type="required"
+            message="Nome do produto é obrigatório"
+          >
+          </dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+          colSpan="1"
+          editorType="dxNumberBox"
+          [editorOptions]="{ showClearButton: true, value: null }"
+          dataField="valor_unitario"
+        >
+          <dxi-validation-rule
+            type="required"
+            message="Valor unitário do produto é obrigatório"
+          >
+          </dxi-validation-rule>
+        </dxi-item>
+        <dxi-item colSpan="1" dataField="multiplo" editorType="dxNumberBox">
+        </dxi-item>
+      </dxi-item>
+
+      <dxi-item
+        itemType="button"
+        horizontalAlignment="left"
+        [buttonOptions]="buttonOptions"
+      >
+      </dxi-item>
+    </dx-form>
+  </form>
+</dx-popup>
