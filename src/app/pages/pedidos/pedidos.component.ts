@@ -1,20 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ItensFormService, SaveButton } from 'src/app/shared/services/itens-form.service';
 
 @Component({
   templateUrl: 'pedidos.component.html',
 })
-export class PedidosComponent implements OnInit {
-  dataSource = [
-    {
-      "id": 5,
-      "cliente_id": 2,
-      "cliente_nome":"Samuel Lucas Bernardi",
-      "valor_total": "20000.00",
-    }
-  ]
-  constructor() { }
+export class PedidosComponent {
+  popupVisible!: boolean;
+  formData!: any;
+  buttonOptions!: SaveButton;
+  clientes: any = [];
 
-  ngOnInit(): void {
+  dataSource = [];
+
+  constructor(private _form: ItensFormService) {
+    this.buttonOptions = this._form.saveButton();
   }
 
+  togglePopup() {
+    this.popupVisible = !this.buttonOptions;
+  }
+
+  onFormSubmit = (event: Event) => {
+    event.preventDefault();
+    this._form.notify("Produto cadastrado com sucesso.");
+
+    this.formData = {};
+    this.togglePopup();
+  }
 }

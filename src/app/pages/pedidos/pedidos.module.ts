@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DxDataGridModule } from 'devextreme-angular';
+import { DxDataGridModule, DxPopupModule, DxSpeedDialActionModule, DxFormModule } from 'devextreme-angular';
 import { PedidosComponent } from './pedidos.component';
 import { PedidosRountingModule } from './pedidos.routing';
 
@@ -11,7 +11,10 @@ import { PedidosRountingModule } from './pedidos.routing';
   imports: [
     PedidosRountingModule,
     CommonModule,
-    DxDataGridModule
+    DxDataGridModule,
+    DxPopupModule,
+    DxSpeedDialActionModule,
+    DxFormModule
   ]
 })
 export class PedidosModule { }
