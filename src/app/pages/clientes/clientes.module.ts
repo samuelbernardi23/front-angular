@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClientesComponent } from './clientes.component';
-import { DxDataGridModule } from 'devextreme-angular';
+import { DxDataGridModule, DxPopupModule, DxSpeedDialActionModule, DxFormModule } from 'devextreme-angular';
 import { ClientesRountingModule } from './clientes.routing';
+import { DxButtonModule } from 'devextreme-angular/ui/button';
 
 
 
@@ -13,7 +14,11 @@ import { ClientesRountingModule } from './clientes.routing';
   imports: [
     ClientesRountingModule,
     CommonModule,
-    DxDataGridModule
+    DxDataGridModule,
+    DxSpeedDialActionModule,
+    DxPopupModule,
+    DxFormModule,
+    DxButtonModule  
   ]
 })
 export class ClientesModule { }

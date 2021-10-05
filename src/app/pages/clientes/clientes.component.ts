@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import notify from 'devextreme/ui/notify';
 
 @Component({
   selector: 'app-clientes',
@@ -6,19 +7,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clientes.component.scss']
 })
 export class ClientesComponent implements OnInit {
-  dataSource = [
-    {
-      "id": 1,
-      "nome": "Lyon Martins"
-    },
-    {
-      "id": 2,
-      "nome": "Samuel Lucas Bernardi"
-    }
-  ]
-  constructor() { }
+  popupVisible!: boolean;
+  customer!: any;
+  buttonOptions: any = {
+    text: "Salvar",
+    type: "success",
+    useSubmitBehavior: true,
+    height: "60",
+  }
+
+  dataSource = [];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+  onFormSubmit = function (event: Event) {
+    notify({
+      message: "Cliente cadastrado com sucesso.",
+      position: {
+        my: "center center",
+        at: "center center"
+      }
+    }, "success", 4000);
+
+    event.preventDefault();
+  }
 }
