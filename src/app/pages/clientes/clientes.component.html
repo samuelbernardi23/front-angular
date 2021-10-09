@@ -18,13 +18,24 @@
     [allowUpdating]="true"
     [allowDeleting]="true"
     [allowAdding]="true"
+  >
+    <dxo-texts
+      [confirmDeleteTitle]="'Atenção'"
+      confirmDeleteMessage="Tem certeza que deseja remover este registro ?"
     >
+    </dxo-texts>
   </dxo-editing>
   <dxo-paging [pageSize]="10"></dxo-paging>
   <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
   <dxo-filter-row [visible]="true"></dxo-filter-row>
 
-  <dxi-column dataField="id" [width]="90" [hidingPriority]="2" caption="ID" [allowEditing]="false">
+  <dxi-column
+    dataField="id"
+    [width]="90"
+    [hidingPriority]="2"
+    caption="ID"
+    [allowEditing]="false"
+  >
   </dxi-column>
   <dxi-column
     dataField="nome"
