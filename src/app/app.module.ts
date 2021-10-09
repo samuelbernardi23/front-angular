@@ -9,6 +9,7 @@ import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FooterModule } from './shared/components';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FooterModule } from './shared/components';
   providers: [
     AuthService,
     ScreenService,
-    AppInfoService
+    AppInfoService,
+    AppService
   ],
   bootstrap: [AppComponent]
 })

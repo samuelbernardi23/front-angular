@@ -1,19 +1,30 @@
 <h2 class="content-block-title">Clientes</h2>
 
 <dx-data-grid
+  #dxDataGrid
   class="dx-card wide-card"
   [dataSource]="dataSource"
   [showBorders]="false"
   [columnAutoWidth]="true"
   [columnHidingEnabled]="true"
   noDataText="Nenhum dado encontrado."
+  (onRowInserting)="storeCliente($event.data)"
+  (onRowUpdated)="updateCliente($event.data)"
+  (onRowRemoving)="removeCliente($event.data)"
   width="100%"
 >
+  <dxo-editing
+    mode="row"
+    [allowUpdating]="true"
+    [allowDeleting]="true"
+    [allowAdding]="true"
+    >
+  </dxo-editing>
   <dxo-paging [pageSize]="10"></dxo-paging>
   <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
   <dxo-filter-row [visible]="true"></dxo-filter-row>
 
-  <dxi-column dataField="id" [width]="90" [hidingPriority]="2" caption="ID">
+  <dxi-column dataField="id" [width]="90" [hidingPriority]="2" caption="ID" [allowEditing]="false">
   </dxi-column>
   <dxi-column
     dataField="nome"
@@ -24,7 +35,7 @@
   >
   </dxi-column>
 </dx-data-grid>
-
+<!-- 
 <dx-speed-dial-action
   icon="add"
   label="Adicionar cliente"
@@ -41,14 +52,17 @@
   <form action="your-action" (submit)="onFormSubmit($event)">
     <dx-form
       id="form"
-      [formData]="customer"
+      [(formData)]="customer"
       [readOnly]="false"
       [showColonAfterLabel]="true"
       validationGroup="customerData"
     >
       <dxi-item itemType="group" caption="">
         <dxi-item dataField="nome">
-          <dxi-validation-rule type="required" message="Nome do cliente é obrigatório">
+          <dxi-validation-rule
+            type="required"
+            message="Nome do cliente é obrigatório"
+          >
           </dxi-validation-rule>
         </dxi-item>
       </dxi-item>
@@ -61,4 +75,4 @@
       </dxi-item>
     </dx-form>
   </form>
-</dx-popup>
+</dx-popup> -->

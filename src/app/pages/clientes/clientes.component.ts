@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import notify from 'devextreme/ui/notify';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ClientesModel } from './core/models/clientes.model';
+import { ClientesService } from './core/services/clientes.service';
+import { ItensFormService } from '../../shared/services/itens-form.service';
+import { DxDataGridComponent } from 'devextreme-angular';
 
 @Component({
   selector: 'app-clientes',
@@ -7,32 +10,59 @@ import notify from 'devextreme/ui/notify';
   styleUrls: ['./clientes.component.scss']
 })
 export class ClientesComponent implements OnInit {
+  @ViewChild('dxDataGrid', { read: DxDataGridComponent, static: true }) dxDataGrid!: DxDataGridComponent;
   popupVisible!: boolean;
-  customer!: any;
-  buttonOptions: any = {
-    text: "Salvar",
-    type: "success",
-    useSubmitBehavior: true,
-    height: "60",
+  customer!: ClientesModel;
+  buttonOptions!: any;
+
+  dataSource!: ClientesModel[];
+
+  constructor(private _clientesService: ClientesService, private _itensForm: ItensFormService) {
   }
 
-  dataSource = [];
-
-  constructor() {
+  ngOnInit() {
+    this.fetchClientes();
+    this.buttonOptions = this._itensForm.saveButton();
   }
 
-  ngOnInit(): void {
+  fetchClientes() {
+    this._clientesService.fetchClientes().subscribe((clientes: ClientesModel[]) => {
+      this.dataSource = clientes;
+    });
   }
 
-  onFormSubmit = function (event: Event) {
-    notify({
-      message: "Cliente cadastrado com sucesso.",
-      position: {
-        my: "center center",
-        at: "center center"
-      }
-    }, "success", 4000);
-
+  onFormSubmit = (event: Event) => {
     event.preventDefault();
+
+    this.storeCliente(this.customer);
+  }
+
+  storeCliente(cliente: ClientesModel) {
+
+    this._clientesService.storeCliente(cliente).subscribe((res) => {
+
+      this._itensForm.notify(`Cliente cadastrado com sucesso.`);
+
+      this.fetchClientes();
+    });
+  }
+
+  updateCliente(cliente: ClientesModel) {
+    this._clientesService.updateCliente(cliente).subscribe((res) => {
+      
+      this._itensForm.notify(`Cliente atualizado com sucesso.`);
+
+      this.fetchClientes();
+    });
+
+  }
+  removeCliente(cliente: ClientesModel) {
+    this._clientesService.removeCliente(cliente).subscribe((res) => {
+
+      this._itensForm.notify(`Cliente removido com sucesso.`);
+
+      this.fetchClientes();
+    });
+
   }
 }
