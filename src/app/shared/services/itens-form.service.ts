@@ -19,8 +19,8 @@ export class ItensFormService {
     notify({
       message: message,
       position: {
-        my: "center center",
-        at: "center center"
+        my: "bottom center",
+        at: "bottom center"
       }
     }, "success", time ? time : 4000);
   }

@@ -1,12 +1,17 @@
 <h2 class="content-block-title">Pedidos</h2>
 
 <dx-data-grid
+  #dxDataGrid
+  keyExpr="id"
   class="dx-card wide-card"
   [dataSource]="dataSource"
   [showBorders]="false"
   [columnAutoWidth]="true"
   [columnHidingEnabled]="true"
   noDataText="Nenhum dado encontrado."
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  (onRowClick)="selectedChanged($event)"
   width="100%"
 >
   <dxo-paging [pageSize]="10"></dxo-paging>
@@ -16,8 +21,6 @@
   <dxi-column dataField="id" [width]="200" caption="Pedido (ID)"> </dxi-column>
   <dxi-column dataField="cliente_id" [width]="200" caption="Cliente (ID)">
   </dxi-column>
-  <dxi-column dataField="cliente_nome" caption="Cliente"> </dxi-column>
-
   <dxi-column dataField="valor_total" [width]="250" caption="Valor total">
   </dxi-column>
 </dx-data-grid>
@@ -25,20 +28,37 @@
 <dx-speed-dial-action
   icon="add"
   label="Adicionar pedido"
-  (onClick)="popupVisible = !popupVisible"
+  (onClick)="insPedido$()"
 ></dx-speed-dial-action>
+<dx-speed-dial-action
+  icon="trash"
+  label="Remover pedido"
+  [index]="2"
+  [visible]="selectedRow"
+  (onClick)="deletePedido$()"
+>
+</dx-speed-dial-action>
+<dx-speed-dial-action
+  icon="edit"
+  label="Alterar pedido"
+  [index]="3"
+  [visible]="selectedRow"
+  (onClick)="updatePedido$()"
+>
+</dx-speed-dial-action>
 
 <dx-popup
-  width="60%"
+  width="80%"
   height="70%"
   [visible]="true"
-  title="Adicionar pedido"
+  [title]="titlePopup"
   [(visible)]="popupVisible"
+  (onHidden)="selectedRow = false"
 >
   <form action="your-action" (submit)="onFormSubmit($event)">
     <dx-form
       id="form"
-      [formData]="formData"
+      [(formData)]="formDataPedido"
       [readOnly]="false"
       [showColonAfterLabel]="true"
       validationGroup="customerData"
@@ -47,7 +67,7 @@
         <dxi-item
           colSpan="2"
           editorType="dxSelectBox"
-          dataField="cliente_nome"
+          dataField="cliente_id"
           [editorOptions]="{
             dataSource: clientes,
             displayExpr: 'nome',
@@ -62,37 +82,82 @@
       <dxi-item>
         <div *dxTemplate>
           <dx-data-grid
+            #dxDataGridItens
             class="dx-card wide-card"
-            [dataSource]="dataSource"
+            [dataSource]="dataSourceItens"
             [showBorders]="false"
             [columnAutoWidth]="true"
             [columnHidingEnabled]="true"
             noDataText="Nenhum dado encontrado."
+            (onSelectionChanged)="onSelectionChanged($event)"
+            [columnAutoWidth]="true"
             width="100%"
           >
+            <dxo-editing
+              mode="row"
+              [allowUpdating]="true"
+              [allowDeleting]="true"
+              [allowAdding]="true"
+              (changesChange)="onSelectionChanged($event)"
+            >
+              <dxo-texts
+                [confirmDeleteTitle]="'Atenção'"
+                confirmDeleteMessage="Tem certeza que deseja remover este registro ?"
+              >
+              </dxo-texts>
+            </dxo-editing>
             <dxo-paging [pageSize]="10"></dxo-paging>
             <dxo-pager
               [showPageSizeSelector]="true"
               [showInfo]="true"
             ></dxo-pager>
             <dxo-filter-row [visible]="true"></dxo-filter-row>
-
-            <dxi-column dataField="id" [width]="200" caption="Pedido (ID)">
-            </dxi-column>
             <dxi-column
-              dataField="cliente_id"
-              [width]="200"
-              caption="Cliente (ID)"
+              dataField="id"
+              [width]="90"
+              [hidingPriority]="2"
+              caption="ID"
+              [allowEditing]="false"
             >
             </dxi-column>
-            <dxi-column dataField="cliente_nome" caption="Cliente">
+            <dxi-column
+              dataField="produto_id"
+              [width]="190"
+              caption="Subject"
+              [hidingPriority]="4"
+              caption="Produto"
+            >
+              <dxo-lookup
+                [dataSource]="produtos"
+                displayExpr="nome"
+                valueExpr="id"
+              >
+              </dxo-lookup>
             </dxi-column>
 
             <dxi-column
-              dataField="valor_total"
-              [width]="250"
-              caption="Valor total"
+              dataField="quantidade"
+              caption="Subject"
+              [hidingPriority]="2"
+              caption="Quantidade"
+              width="120"
+              dataType="number"
             >
+              <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-column>
+            <dxi-column
+              dataField="preco_unitario"
+              [width]="190"
+              caption="Subject"
+              [hidingPriority]="4"
+              dataType="number"
+              caption="Preço unitário"
+              [format]="{
+                type: 'decimal',
+                precision: 2
+              }"
+            >
+              <dxi-validation-rule type="required"></dxi-validation-rule>
             </dxi-column>
           </dx-data-grid>
         </div>
