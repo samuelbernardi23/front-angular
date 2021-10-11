@@ -9,6 +9,7 @@ import { ProdutosService } from '../produtos/core/services/produtos.service';
 import { ItensFormService } from '../../shared/services/itens-form.service';
 import { PedidosService } from './core/services/pedidos.service';
 import { ItemsPedidoService } from './core/services/items-pedido.service';
+import { DxScrollViewModule } from 'devextreme-angular/ui/scroll-view';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ItemsPedidoService } from './core/services/items-pedido.service';
     DxSpeedDialActionModule,
     DxFormModule,
     HttpClientModule,
-    DxDataGridModule
+    DxDataGridModule,
+    DxScrollViewModule
   ],
   providers:[
     ClientesService,
