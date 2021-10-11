@@ -77,7 +77,6 @@ export class PedidosComponent implements OnInit {
 
   onFormSubmit = (event: Event) => {
     event.preventDefault();
-
     if (this.dataSourceItens.length < 1) {
       this._itensForm.notify('Adicione pelo menos um item ao pedido para continuar.', 5000);
     } else {
@@ -102,7 +101,6 @@ export class PedidosComponent implements OnInit {
 
   storePedido(pedido: PedidosModel) {
     this._pedidosService.storePedido(pedido).subscribe(res => {
-      console.log(res);
       this._itensForm.notify('Pedido criado com sucesso.', 5000);
       this.fetchPedidos();
       this.clearPopupPedido();
@@ -111,7 +109,6 @@ export class PedidosComponent implements OnInit {
 
   updatePedido(pedido: PedidosModel) {
     this._pedidosService.updatePedido(pedido).subscribe(res => {
-      console.log(res);
       this._itensForm.notify('Pedido alterado com sucesso.', 5000);
       this.fetchPedidos();
       this.clearPopupPedido();
@@ -137,13 +134,16 @@ export class PedidosComponent implements OnInit {
   }
 
   onSelectionChanged(event: any) {
-    const pedido: PedidosModel = event[0].data;
+    if (event.length > 0) {
+      const pedido: PedidosModel = event[0].data;
 
-    // Adiciona sugestão de preço.
-    if (pedido.produto_id) {
-      const produto: ProdutosModel = this.produtos.filter(p => p.id === pedido.produto_id)[0]
-      Object.assign(pedido, { preco_unitario: produto.preco_unitario });
-      this.dxDataGridItens.instance.refresh();
+      // Adiciona sugestão de preço.
+      if (pedido.produto_id) {
+        const produto: ProdutosModel = this.produtos.filter(p => p.id === pedido.produto_id)[0]
+
+        Object.assign(pedido, { preco_unitario: produto.preco_unitario, multiplo: produto.multiplo });
+        this.dxDataGridItens.instance.refresh();
+      }
     }
 
   }
@@ -169,4 +169,13 @@ export class PedidosComponent implements OnInit {
     });
   }
 
+  isMultiple(event: any) {
+    const item: ItemsPedidoModel = event.data;
+
+    return new Promise((resolve) => {
+      if (item.multiplo)
+        return resolve(item.quantidade % item.multiplo === 0);
+      return resolve(true);
+    });
+  }
 }
