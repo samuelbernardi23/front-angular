@@ -28,14 +28,14 @@
 <dx-speed-dial-action
   icon="add"
   label="Adicionar pedido"
-  (onClick)="insPedido$()"
+  (onClick)="insPedidoAction()"
 ></dx-speed-dial-action>
 <dx-speed-dial-action
   icon="trash"
   label="Remover pedido"
   [index]="2"
   [visible]="selectedRow"
-  (onClick)="deletePedido$()"
+  (onClick)="deletePedidoAction()"
 >
 </dx-speed-dial-action>
 <dx-speed-dial-action
@@ -43,7 +43,7 @@
   label="Alterar pedido"
   [index]="3"
   [visible]="selectedRow"
-  (onClick)="updatePedido$()"
+  (onClick)="updatePedidoAction()"
 >
 </dx-speed-dial-action>
 
@@ -93,7 +93,6 @@
               [columnAutoWidth]="true"
               [columnHidingEnabled]="true"
               noDataText="Nenhum dado encontrado."
-              (onSelectionChanged)="onSelectionChanged($event)"
               [columnAutoWidth]="true"
               width="100%"
             >
@@ -102,7 +101,7 @@
                 [allowUpdating]="true"
                 [allowDeleting]="true"
                 [allowAdding]="true"
-                (changesChange)="onSelectionChanged($event)"
+                (changesChange)="selectedProduto($event)"
               >
                 <dxo-texts
                   [confirmDeleteTitle]="'Atenção'"
@@ -118,17 +117,13 @@
               <dxo-filter-row [visible]="true"></dxo-filter-row>
               <dxi-column
                 dataField="id"
-                [width]="90"
-                [hidingPriority]="2"
                 caption="ID"
                 [allowEditing]="false"
               >
               </dxi-column>
               <dxi-column
                 dataField="produto_id"
-                [width]="190"
                 caption="Subject"
-                [hidingPriority]="4"
                 caption="Produto"
               >
                 <dxo-lookup
@@ -140,9 +135,7 @@
               </dxi-column>
               <dxi-column
                 dataField="multiplo"
-                [width]="190"
                 caption="Subject"
-                [hidingPriority]="4"
                 caption="Multiplo"
                 [allowEditing]="false"
               >
@@ -151,9 +144,7 @@
               <dxi-column
                 dataField="quantidade"
                 caption="Subject"
-                [hidingPriority]="2"
                 caption="Quantidade"
-                width="120"
                 dataType="number"
               >
                 <dxi-validation-rule type="required"></dxi-validation-rule>
@@ -166,9 +157,7 @@
               </dxi-column>
               <dxi-column
                 dataField="preco_unitario"
-                [width]="190"
                 caption="Subject"
-                [hidingPriority]="4"
                 dataType="number"
                 caption="Preço unitário"
                 [format]="{

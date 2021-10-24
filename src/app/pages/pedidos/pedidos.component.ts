@@ -74,14 +74,26 @@ export class PedidosComponent implements OnInit {
     })
   }
 
+  storePedido(pedido: PedidosModel) {
+    this._pedidosService.storePedido(pedido).subscribe(() => {
+      this._itensForm.notify('Pedido criado com sucesso.', 5000);
+      this.fetchPedidos();
+      this.clearPopupPedido();
+    });
+  }
 
-  onFormSubmit = (event: Event) => {
-    event.preventDefault();
-    if (this.dataSourceItens.length < 1) {
-      this._itensForm.notify('Adicione pelo menos um item ao pedido para continuar.', 5000);
-    } else {
-      this.toJson();
-    }
+  updatePedido(pedido: PedidosModel) {
+    this._pedidosService.updatePedido(pedido).subscribe(() => {
+      this._itensForm.notify('Pedido alterado com sucesso.', 5000);
+      this.fetchPedidos();
+      this.clearPopupPedido();
+    });
+  }
+
+  fetchPedidos() {
+    this._pedidosService.fetchPedidos().subscribe((response: PedidosModel[]) => {
+      this.dataSource = response;
+    });
   }
 
   toJson() {
@@ -99,30 +111,17 @@ export class PedidosComponent implements OnInit {
     }
   }
 
-  storePedido(pedido: PedidosModel) {
-    this._pedidosService.storePedido(pedido).subscribe(res => {
-      this._itensForm.notify('Pedido criado com sucesso.', 5000);
-      this.fetchPedidos();
-      this.clearPopupPedido();
-    });
-  }
-
-  updatePedido(pedido: PedidosModel) {
-    this._pedidosService.updatePedido(pedido).subscribe(res => {
-      this._itensForm.notify('Pedido alterado com sucesso.', 5000);
-      this.fetchPedidos();
-      this.clearPopupPedido();
-    });
-  }
-
-  fetchPedidos() {
-    this._pedidosService.fetchPedidos().subscribe((response: PedidosModel[]) => {
-      this.dataSource = response;
-    });
+  onFormSubmit = (event: Event) => {
+    event.preventDefault();
+    if (this.dataSourceItens.length < 1) {
+      this._itensForm.notify('Adicione pelo menos um item ao pedido para continuar.', 5000);
+    } else {
+      this.toJson();
+    }
   }
 
   clearPopupPedido() {
-    this.popupVisible = false;
+    this.dxDataGridItens.instance.cancelEditData();
     this.dataSourceItens = [];
     this.formDataPedido = new PedidosModel();
   }
@@ -133,36 +132,42 @@ export class PedidosComponent implements OnInit {
     this.formDataPedido = pedido;
   }
 
-  onSelectionChanged(event: any) {
-    if (event.length > 0) {
-      const pedido: PedidosModel = event[0].data;
+  selectedProduto(event: any) {
+    if (event) {
+      const pedido: Pick<PedidosModel, 'produto_id'> = event[0].data;
 
       // Adiciona sugestão de preço.
       if (pedido.produto_id) {
         const produto: ProdutosModel = this.produtos.filter(p => p.id === pedido.produto_id)[0]
 
-        Object.assign(pedido, { preco_unitario: produto.preco_unitario, multiplo: produto.multiplo });
-        this.dxDataGridItens.instance.refresh();
+        if (produto) {
+          Object.assign(pedido, { preco_unitario: produto.preco_unitario, multiplo: produto.multiplo });
+          this.dxDataGridItens.instance.refresh();
+        }
       }
     }
-
   }
 
-  insPedido$() {
+  insPedidoAction() {
     this.titlePopup = "Adicionar pedido";
     this.operation = 'post';
-    this.formDataPedido = new PedidosModel();
+
+    this.clearPopupPedido();
+
     this.popupVisible = true;
   }
 
-  updatePedido$() {
+  updatePedidoAction() {
     this.titlePopup = "Alterar pedido";
     this.operation = 'patch';
-    this.popupVisible = true;
+
+    this.dxDataGridItens.instance.cancelEditData();
     this.fetchItemsPedido(this.formDataPedido);
+
+    this.popupVisible = true;
   }
 
-  deletePedido$() {
+  deletePedidoAction() {
     let result = confirm("<i>Você tem certeza que deseja remover este pedido?</i>", "Atenção");
     result.then((dialogResult) => {
       if (dialogResult) this.removePedido(this.formDataPedido)
@@ -171,6 +176,7 @@ export class PedidosComponent implements OnInit {
 
   isMultiple(event: any) {
     const item: ItemsPedidoModel = event.data;
+    debugger
 
     return new Promise((resolve) => {
       if (item.multiplo)
