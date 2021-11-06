@@ -9,7 +9,7 @@ import { PedidosModel } from '../models/pedidos.model';
   providedIn: 'root'
 })
 export class ItemsPedidoService {
-  api!: string;
+  api!: string | number;
 
   constructor(private _appService: AppService, private _http: HttpClient) {
     this.api = this._appService.urlApi();

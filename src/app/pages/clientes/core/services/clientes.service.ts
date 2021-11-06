@@ -8,7 +8,7 @@ import { AppService } from '../../../../app.service';
   providedIn: 'root'
 })
 export class ClientesService {
-  url!: string;
+  url!: string | number;
 
   constructor(private _http: HttpClient, private _appSerive: AppService) {
     this.url = this._appSerive.urlApi()

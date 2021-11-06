@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class PedidosService {
-  api!: string;
+  api!: string | number;
 
   constructor(private _appService: AppService, private _http: HttpClient) {
     this.api = this._appService.urlApi();

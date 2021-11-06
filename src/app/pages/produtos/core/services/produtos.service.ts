@@ -8,7 +8,7 @@ import { ProdutosModel } from '../models/produtos.model';
   providedIn: 'root'
 })
 export class ProdutosService {
-  api!: string;
+  api!: string | number;
 
   constructor(private _http: HttpClient, private _appService: AppService) {
     this.api = this._appService.urlApi();
