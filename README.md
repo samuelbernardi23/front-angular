@@ -1,27 +1,10 @@
 # FrontAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
+### Framework visual utilizado foi Devextreme
+https://js.devexpress.com/Documentation/
 
-## Development server
+### Angular 12
+Decidi criar a estrutura orientada a modulos e rotas, é uma estrutura abrangente que futuramente poderia comportar facilmente uma infindade de outros módulos e componentes.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Start
+Para inicializar o projeto, basta apenas executar ``npm install`` e após a instalação dos pacotes ``npm run start | ng serve``  no diretório raiz.
