@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "node server",
     "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build-themes": "devextreme build",
-    "postinstall": "npm run build-themes && ng build --output-path angularapp --aot --prod"
+    "postinstall": "npm run build-themes"
   },
   "engines": {
     "node": "14.15.4",
