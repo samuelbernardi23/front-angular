@@ -9,6 +9,6 @@ export class AppService {
   constructor() { }
 
   urlApi(): any {
-    return environment.api + '';
+    return process.env.BASE_URL;
   }
 }
