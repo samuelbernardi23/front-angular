@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  api: "https://api-mercos.herokuapp.com"
+  api: 'http://localhost:3333'
+  // api: "https://api-mercos.herokuapp.com"
 };
