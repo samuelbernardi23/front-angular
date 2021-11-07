@@ -8,7 +8,7 @@ export class AppService {
 
   constructor() { }
 
-  urlApi(): string | number {
-    return environment.api;
+  urlApi(): any {
+    return environment.api + '';
   }
 }
