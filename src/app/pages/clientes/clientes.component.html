@@ -7,12 +7,14 @@
   [showBorders]="false"
   [columnAutoWidth]="true"
   [columnHidingEnabled]="true"
-  noDataText="Nenhum dado encontrado."
+  noDataText="Nenhum cliente encontrado."
   (onRowInserting)="storeCliente($event.data)"
   (onRowUpdated)="updateCliente($event.data)"
   (onRowRemoving)="removeCliente($event.data)"
   width="100%"
+  height="75vh"
 >
+  <dxo-load-panel [enabled]="true"> </dxo-load-panel>
   <dxo-editing
     mode="row"
     [allowUpdating]="true"
@@ -46,44 +48,3 @@
   >
   </dxi-column>
 </dx-data-grid>
-<!-- 
-<dx-speed-dial-action
-  icon="add"
-  label="Adicionar cliente"
-  (onClick)="popupVisible = !popupVisible"
-></dx-speed-dial-action>
-
-<dx-popup
-  width="60%"
-  height="50%"
-  [visible]="true"
-  title="Adicionar cliente"
-  [(visible)]="popupVisible"
->
-  <form action="your-action" (submit)="onFormSubmit($event)">
-    <dx-form
-      id="form"
-      [(formData)]="customer"
-      [readOnly]="false"
-      [showColonAfterLabel]="true"
-      validationGroup="customerData"
-    >
-      <dxi-item itemType="group" caption="">
-        <dxi-item dataField="nome">
-          <dxi-validation-rule
-            type="required"
-            message="Nome do cliente é obrigatório"
-          >
-          </dxi-validation-rule>
-        </dxi-item>
-      </dxi-item>
-
-      <dxi-item
-        itemType="button"
-        horizontalAlignment="left"
-        [buttonOptions]="buttonOptions"
-      >
-      </dxi-item>
-    </dx-form>
-  </form>
-</dx-popup> -->

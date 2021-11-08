@@ -1,11 +1,6 @@
 <ng-container *ngIf="isAuthenticated()">
   <app-side-nav-outer-toolbar title="{{appInfo.title}}">
     <router-outlet></router-outlet>
-    <app-footer>
-      Copyright © {{appInfo.currentYear}} Samuel Bernardi.
-      <br/>
-      Todos os direitos reservados.
-    </app-footer>
   </app-side-nav-outer-toolbar>
 </ng-container>
 
