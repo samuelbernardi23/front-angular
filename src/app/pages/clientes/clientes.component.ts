@@ -49,7 +49,7 @@ export class ClientesComponent implements OnInit {
 
   updateCliente(cliente: ClientesModel) {
     this._clientesService.updateCliente(cliente).subscribe((res) => {
-      
+
       this._itensForm.notify(`Cliente atualizado com sucesso.`);
 
       this.fetchClientes();
@@ -61,6 +61,10 @@ export class ClientesComponent implements OnInit {
 
       this._itensForm.notify(`Cliente removido com sucesso.`);
 
+      this.fetchClientes();
+    }, (error) => {
+
+      this._itensForm.notify(error.error.message);
       this.fetchClientes();
     });
 

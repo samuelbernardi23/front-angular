@@ -62,11 +62,15 @@ export class ProdutosComponent implements OnInit {
 
   deleteProduto(produto: ProdutosModel) {
     console.log(produto);
-    
+
     this._produtosService.deleteProduto(produto).subscribe((res) => {
 
       this._itensForm.notify(`Produto excluído com sucesso.`);
 
+      this.fetchProdutos();
+    }, (error) => {
+
+      this._itensForm.notify(error.error.message);
       this.fetchProdutos();
     });
 
