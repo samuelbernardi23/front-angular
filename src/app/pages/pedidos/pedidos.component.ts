@@ -135,14 +135,20 @@ export class PedidosComponent implements OnInit {
 
   selectedProduto(event: any) {
     if (event && event[0]) {
-      const pedido: Pick<PedidosModel, 'produto_id'> = event[0].data;
+      const pedido: Pick<PedidosModel, 'produto_id' | 'preco_unitario'> = event[0].data;
 
       // Adiciona sugestão de preço.
       if (pedido.produto_id) {
         const produto: ProdutosModel = this.produtos.filter(p => p.id === pedido.produto_id)[0]
 
         if (produto) {
-          Object.assign(pedido, { preco_unitario: produto.preco_unitario, multiplo: produto.multiplo });
+          Object.assign(pedido, { multiplo: produto.multiplo });
+          Object.assign(pedido, {
+            preco_unitario:
+              pedido.preco_unitario
+                ? pedido.preco_unitario
+                : produto.preco_unitario
+          });
           this.dxDataGridItens.instance.refresh();
         }
       }
