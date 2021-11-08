@@ -7,8 +7,7 @@
     "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build-themes": "devextreme build",
-    "postinstall": "npm run build-themes"
+    "build-themes": "devextreme build"
   },
   "engines": {
     "node": "14.15.4",
