@@ -23,7 +23,7 @@ describe('PedidosComponent', () => {
       expect(component).toBeTruthy();
    });
 
-   it('deve retornar VERDADEIRO se a quantidade informada FOR múltipla do produto informado', waitForAsync(() => {
+   it('deve retornar VERDADEIRO se a quantidade informada FOR múltipla do produto selecionado', waitForAsync(() => {
       const QUANTIDADE = 2
       const produto = {
          multiplo: 2,
@@ -36,7 +36,7 @@ describe('PedidosComponent', () => {
       })
    }));
 
-   it('deve retornar FALSO se a quantidade informada NÃO FOR múltipla do produto informado', waitForAsync(() => {
+   it('deve retornar FALSO se a quantidade informada NÃO FOR múltipla do produto selecionado', waitForAsync(() => {
       const QUANTIDADE = 2
       const produto = {
          multiplo: 3,
