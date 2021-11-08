@@ -3,6 +3,8 @@
 <dx-data-grid
   #dxDataGrid
   keyExpr="id"
+  [allowColumnResizing]="true"
+  [allowColumnReordering]="true"
   class="dx-card wide-card"
   [dataSource]="dataSource"
   [showBorders]="false"
@@ -91,6 +93,8 @@
           <div *dxTemplate>
             <dx-data-grid
               #dxDataGridItens
+              [allowColumnResizing]="true"
+              [allowColumnReordering]="true"
               class="dx-card wide-card"
               [dataSource]="dataSourceItens"
               [showBorders]="false"
