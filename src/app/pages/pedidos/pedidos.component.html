@@ -80,6 +80,9 @@
               displayExpr: 'nome',
               valueExpr: 'id'
             }"
+            [label]="{
+              text: 'Nome do cliente'
+            }"
           >
             <dxi-validation-rule
               type="required"
@@ -130,6 +133,10 @@
                 caption="Subject"
                 caption="Produto"
               >
+                <dxi-validation-rule
+                  type="required"
+                  message="Prduto é obrigatório"
+                ></dxi-validation-rule>
                 <dxo-lookup
                   [dataSource]="produtos"
                   displayExpr="nome"
@@ -153,7 +160,7 @@
               >
                 <dxi-validation-rule
                   type="required"
-                  message="Quantidade é necessária"
+                  message="Quantidade é obrigatório"
                 ></dxi-validation-rule>
                 <dxi-validation-rule
                   type="async"
@@ -171,8 +178,19 @@
                   type: 'decimal',
                   precision: 2
                 }"
+                [editorOptions]="editorOptionsPreco"
               >
-                <dxi-validation-rule type="required"></dxi-validation-rule>
+                <dxi-validation-rule
+                  type="required"
+                  message="Preço unitário é obrigatório"
+                ></dxi-validation-rule>
+                <dxi-validation-rule
+                  type="async"
+                  message="A rentabilidade do produto é muito baixa."
+                  [validationCallback]="rentabilidadeRule"
+                  style="margin: 50px"
+                >
+                </dxi-validation-rule>
               </dxi-column>
             </dx-data-grid>
           </div>

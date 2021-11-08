@@ -13,6 +13,7 @@ import { confirm } from 'devextreme/ui/dialog';
 
 @Component({
   templateUrl: 'pedidos.component.html',
+  styleUrls: ['./pedidos.component.scss']
 })
 export class PedidosComponent implements OnInit {
   @ViewChild('dxDataGridItens', { read: DxDataGridComponent, static: false }) dxDataGridItens!: DxDataGridComponent;
@@ -27,6 +28,8 @@ export class PedidosComponent implements OnInit {
 
   titlePopup: string = "Adicionar pedido";
   selectedRow!: boolean;
+  produtoSelecionado!: ProdutosModel;
+  isRentabilidadeRuim: boolean = false;
 
   operation!: string;
 
@@ -140,6 +143,7 @@ export class PedidosComponent implements OnInit {
       // Adiciona sugestão de preço.
       if (pedido.produto_id) {
         const produto: ProdutosModel = this.produtos.filter(p => p.id === pedido.produto_id)[0]
+        this.produtoSelecionado = produto;
 
         if (produto) {
           Object.assign(pedido, { multiplo: produto.multiplo });
@@ -190,4 +194,71 @@ export class PedidosComponent implements OnInit {
       return resolve(true);
     });
   }
+
+  rentabilidade(value: any): any {
+    const produto = this.produtoSelecionado;
+    this.isRentabilidadeRuim = false;
+
+    if (produto) {
+      const preco_unitario = parseInt(produto.preco_unitario+'');
+
+      if (value > preco_unitario) {
+        return {
+          text: 'ótima',
+          color: '#00ff62'
+        };
+      }
+      if (value >= (preco_unitario / 100) * 90) {
+        return {
+          text: 'boa',
+          color: '#ffb300'
+        };
+      } else {
+        this.isRentabilidadeRuim = true;
+        return {
+          text: 'ruim',
+          color: '#ff1e00'
+        };
+      }
+    }
+  }
+
+  setTemplateRentabilidade = (e: any) => {
+    const value = e.event.currentTarget.value;
+
+    const row = document.querySelectorAll('#preco_unitario')[1];
+    const p = document.createElement('p');
+    p.setAttribute
+    if (value) {
+      const { text, color } = this.rentabilidade(value);
+      p.innerText = 'Rentabilidade ' + text;
+      p.style.fontWeight = '700';
+      p.style.color = color;
+      p.id = 'update_preco_unitario'
+    }
+
+    let template = document.querySelector('#update_preco_unitario')!;
+    if (template) {
+      row.removeChild(template);
+    }
+
+    row.appendChild(p);
+    p.click()
+  }
+
+  editorOptionsPreco: any = {
+    elementAttr: {
+      id: 'preco_unitario'
+    },
+    onInput: this.setTemplateRentabilidade,
+    itemTemplate: 'precoTemplate',
+  }
+
+  rentabilidadeRule = (event: any) => {
+    return new Promise((resolve) => {
+
+      return resolve(!this.isRentabilidadeRuim);
+    });
+  }
+
 }

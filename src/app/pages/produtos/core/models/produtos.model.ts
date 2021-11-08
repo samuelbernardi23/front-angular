@@ -1,6 +1,6 @@
 export class ProdutosModel {
    id!: number;
    nome!: string;
-   preco_unitario!: number;
+   preco_unitario!: string | number;
    multiplo!: number;
 }
