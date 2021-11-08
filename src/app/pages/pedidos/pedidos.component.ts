@@ -124,6 +124,7 @@ export class PedidosComponent implements OnInit {
     this.dxDataGridItens.instance.cancelEditData();
     this.dataSourceItens = [];
     this.formDataPedido = new PedidosModel();
+    this.popupVisible = false;
   }
 
   selectedChanged = (event: any) => {
@@ -133,7 +134,7 @@ export class PedidosComponent implements OnInit {
   }
 
   selectedProduto(event: any) {
-    if (event) {
+    if (event && event[0]) {
       const pedido: Pick<PedidosModel, 'produto_id'> = event[0].data;
 
       // Adiciona sugestão de preço.
@@ -176,7 +177,6 @@ export class PedidosComponent implements OnInit {
 
   isMultiple(event: any) {
     const item: ItemsPedidoModel = event.data;
-    debugger
 
     return new Promise((resolve) => {
       if (item.multiplo)
