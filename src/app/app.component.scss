@@ -9,3 +9,11 @@
 ::ng-deep .content-block-title{
   text-align: center !important;
 }
+
+::ng-deep .dx-button.dx-button-success {
+  border-radius: 40px;
+  background-color: rgb(137 96 255);
+  color: rgb(255 255 255);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 24%);
+  width: 130px;
+}
