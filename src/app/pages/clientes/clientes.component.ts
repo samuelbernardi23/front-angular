@@ -16,6 +16,8 @@ export class ClientesComponent implements OnInit {
   buttonOptions!: any;
 
   dataSource!: ClientesModel[];
+  loadingIndicator: boolean = true;
+
 
   constructor(private _clientesService: ClientesService, private _itensForm: ItensFormService) {
   }
@@ -28,6 +30,13 @@ export class ClientesComponent implements OnInit {
   fetchClientes() {
     this._clientesService.fetchClientes().subscribe((clientes: ClientesModel[]) => {
       this.dataSource = clientes;
+    }, (error) => {
+      if (error.status == 0) {
+        this._itensForm.notify('Sem resposta do servidor', 5000)
+      }
+      this.loadingIndicator = false;
+    }, () => {
+      this.loadingIndicator = false;
     });
   }
 

@@ -10,6 +10,7 @@ import { ItensFormService } from '../../shared/services/itens-form.service';
 import { PedidosService } from './core/services/pedidos.service';
 import { ItemsPedidoService } from './core/services/items-pedido.service';
 import { DxScrollViewModule } from 'devextreme-angular/ui/scroll-view';
+import { LoadPanelIndicatorModule } from 'src/app/shared/components';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DxScrollViewModule } from 'devextreme-angular/ui/scroll-view';
     DxFormModule,
     HttpClientModule,
     DxDataGridModule,
-    DxScrollViewModule
+    DxScrollViewModule,
+    LoadPanelIndicatorModule
   ],
   providers:[
     ClientesService,

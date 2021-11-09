@@ -6,6 +6,7 @@ import { ClientesRountingModule } from './clientes.routing';
 import { DxButtonModule } from 'devextreme-angular/ui/button';
 import { ClientesService } from './core/services/clientes.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadPanelIndicatorModule } from 'src/app/shared/components';
 
 
 
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     DxSpeedDialActionModule,
     DxPopupModule,
     DxFormModule,
-    DxButtonModule  
+    DxButtonModule,
+    LoadPanelIndicatorModule
   ],
   providers:[
     ClientesService

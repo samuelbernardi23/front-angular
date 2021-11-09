@@ -30,6 +30,7 @@ export class PedidosComponent implements OnInit {
   selectedRow!: boolean;
   produtoSelecionado!: ProdutosModel;
   isRentabilidadeRuim: boolean = false;
+  loadingIndicator: boolean = true;
 
   operation!: string;
 
@@ -96,6 +97,14 @@ export class PedidosComponent implements OnInit {
   fetchPedidos() {
     this._pedidosService.fetchPedidos().subscribe((response: PedidosModel[]) => {
       this.dataSource = response;
+      this.loadingIndicator = false;
+    }, (error) => {
+      if(error.status == 0){
+        this._itensForm.notify('Sem resposta do servidor', 5000)
+      }
+      this.loadingIndicator = false;
+    }, () => {
+      this.loadingIndicator = false;
     });
   }
 
@@ -200,7 +209,7 @@ export class PedidosComponent implements OnInit {
     this.isRentabilidadeRuim = false;
 
     if (produto) {
-      const preco_unitario = parseInt(produto.preco_unitario+'');
+      const preco_unitario = parseInt(produto.preco_unitario + '');
 
       if (value > preco_unitario) {
         return {

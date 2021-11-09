@@ -6,6 +6,7 @@ import { DxDataGridModule, DxSpeedDialActionModule, DxPopupModule, DxFormModule 
 import { ItensFormService } from '../../shared/services/itens-form.service';
 import { ProdutosService } from './core/services/produtos.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadPanelIndicatorModule } from 'src/app/shared/components';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     DxSpeedDialActionModule,
     DxPopupModule,
     DxFormModule,
-    HttpClientModule
+    HttpClientModule,
+    LoadPanelIndicatorModule
   ],
   providers:[
     ItensFormService,

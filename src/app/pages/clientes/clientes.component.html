@@ -1,5 +1,8 @@
 <h2 class="content-block-title">Clientes</h2>
 
+<app-load-panel-indicator [visible]="loadingIndicator">
+</app-load-panel-indicator>
+
 <dx-data-grid
   #dxDataGrid
   [allowColumnResizing]="true"
@@ -16,7 +19,7 @@
   width="100%"
   height="75vh"
 >
-  <dxo-load-panel [enabled]="true"> </dxo-load-panel>
+  <dxo-load-panel [enabled]="false"> </dxo-load-panel>
   <dxo-editing
     mode="row"
     [allowUpdating]="true"

@@ -15,6 +15,7 @@ export class ProdutosComponent implements OnInit {
   buttonOptions!: SaveButton;
 
   dataSource: ProdutosModel[] = [];
+  loadingIndicator: boolean = true;
 
   constructor(private _itensForm: ItensFormService, private _produtosService: ProdutosService) {
     this.buttonOptions = this._itensForm.saveButton();
@@ -38,6 +39,13 @@ export class ProdutosComponent implements OnInit {
   fetchProdutos() {
     this._produtosService.fetchProdutos().subscribe((produtos: ProdutosModel[]) => {
       this.dataSource = produtos;
+    }, (error) => {
+      if (error.status == 0) {
+        this._itensForm.notify('Sem resposta do servidor', 5000)
+      }
+      this.loadingIndicator = false;
+    }, () => {
+      this.loadingIndicator = false;
     });
   }
 
