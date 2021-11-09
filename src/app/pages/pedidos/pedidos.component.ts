@@ -99,7 +99,7 @@ export class PedidosComponent implements OnInit {
       this.dataSource = response;
       this.loadingIndicator = false;
     }, (error) => {
-      if(error.status == 0){
+      if (error.status == 0) {
         this._itensForm.notify('Sem resposta do servidor', 5000)
       }
       this.loadingIndicator = false;
@@ -235,7 +235,7 @@ export class PedidosComponent implements OnInit {
   setTemplateRentabilidade = (e: any) => {
     const value = e.event.currentTarget.value;
 
-    const row = document.querySelectorAll('#preco_unitario')[1];
+    const row = document.querySelectorAll('#preco_unitario')[1].parentElement;
     const p = document.createElement('p');
     p.setAttribute
     if (value) {
@@ -243,15 +243,18 @@ export class PedidosComponent implements OnInit {
       p.innerText = 'Rentabilidade ' + text;
       p.style.fontWeight = '700';
       p.style.color = color;
-      p.id = 'update_preco_unitario'
+      p.style.position = 'fixed';
+      p.style.marginTop = '-82px';
+      p.style.marginLeft = '37px';
+      p.id = 'update_preco_unitario';
     }
 
     let template = document.querySelector('#update_preco_unitario')!;
     if (template) {
-      row.removeChild(template);
+      row?.removeChild(template);
     }
 
-    row.appendChild(p);
+    row?.append(p);
     p.click()
   }
 

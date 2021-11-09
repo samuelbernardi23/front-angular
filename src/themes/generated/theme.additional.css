@@ -2772,12 +2772,13 @@
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-default.dx-state-focused,
 .dx-swatch-additional .dx-button-mode-text.dx-button-default.dx-state-hover {
-  background-color: rgba(255,87,34,.08);
+  background-color: rgba(108, 34, 255, 0.13);
+
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-default.dx-state-active {
-  background-color: rgba(255,87,34,.36);
+  background-color: rgba(108, 34, 255, 0.36);
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -2793,7 +2794,7 @@
   color: rgba(255,255,255,.35);
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-default .dx-inkripple-wave {
-  background-color: rgba(255,87,34,.2);
+  background-color: rgba(137, 34, 255, 0.2);
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-danger {
   background-color: transparent;

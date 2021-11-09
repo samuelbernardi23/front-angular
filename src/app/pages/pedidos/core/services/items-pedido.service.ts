@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppService } from 'src/app/app.service';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
 import { ItemsPedidoModel } from '../models/items-pedido.model';
 import { PedidosModel } from '../models/pedidos.model';
 

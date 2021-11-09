@@ -2769,12 +2769,12 @@
 }
 .dx-button-mode-text.dx-button-default.dx-state-focused,
 .dx-button-mode-text.dx-button-default.dx-state-hover {
-  background-color: rgba(255,87,34,.08);
+  background-color: rgba(108, 34, 255, 0.13);
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 .dx-button-mode-text.dx-button-default.dx-state-active {
-  background-color: rgba(255,87,34,.36);
+  background-color: rgb(137, 96, 255, .4);
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -2790,7 +2790,7 @@
   color: rgba(0,0,0,.35);
 }
 .dx-button-mode-text.dx-button-default .dx-inkripple-wave {
-  background-color: rgba(255,87,34,.2);
+  background-color: rgba(137, 34, 255, 0.2);
 }
 .dx-button-mode-text.dx-button-danger {
   background-color: transparent;
@@ -6162,12 +6162,12 @@
 }
 .dx-button.dx-list-switchable-delete-button {
   background-color: transparent;
-  color: #f44336;
+  color: #644DED;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 .dx-button.dx-list-switchable-delete-button .dx-icon {
-  color: #f44336;
+  color: #644DED;
 }
 .dx-button.dx-list-switchable-delete-button.dx-state-focused,
 .dx-button.dx-list-switchable-delete-button.dx-state-hover {
@@ -6544,12 +6544,12 @@
 }
 .dx-device-mobile .dx-button.dx-list-switchable-delete-button {
   background-color: transparent;
-  color: #f44336;
+  color: #644DED;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 .dx-device-mobile .dx-button.dx-list-switchable-delete-button .dx-icon {
-  color: #f44336;
+  color: #644DED;
 }
 .dx-device-mobile .dx-button.dx-list-switchable-delete-button.dx-state-focused,
 .dx-device-mobile .dx-button.dx-list-switchable-delete-button.dx-state-hover {
@@ -7236,7 +7236,7 @@
   border-color: rgba(244,67,54,.4);
 }
 .dx-invalid.dx-calendar.dx-state-focused {
-  border-color: #f44336;
+  border-color: #644DED;
 }
 .dx-popup-wrapper .dx-calendar .dx-calendar-caption-button {
   margin: 0;
@@ -10963,15 +10963,15 @@
 }
 .dx-invalid .dx-state-active.dx-radiobutton .dx-radiobutton-icon::before,
 .dx-invalid .dx-state-focused.dx-radiobutton .dx-radiobutton-icon::before {
-  border-color: #f44336;
+  border-color: #644DED;
 }
 .dx-invalid .dx-state-active.dx-radiobutton .dx-radiobutton-icon-dot,
 .dx-invalid .dx-state-focused.dx-radiobutton .dx-radiobutton-icon-dot {
-  background-color: #f44336;
+  background-color: #644DED;
 }
 .dx-invalid .dx-state-active.dx-radiobutton .dx-radiobutton-icon::after,
 .dx-invalid .dx-state-focused.dx-radiobutton .dx-radiobutton-icon::after {
-  background-color: rgba(244,67,54,.1);
+  background-color: #644DED;
   -webkit-transform: scale(1);
   transform: scale(1);
 }
