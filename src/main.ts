@@ -20,6 +20,7 @@ config({
 });
 
 loadMessages(messagesPt.default);
+locale('pt');
 
 themes.initialized(() => {
   platformBrowserDynamic().bootstrapModule(AppModule)
